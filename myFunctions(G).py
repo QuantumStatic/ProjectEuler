@@ -63,34 +63,6 @@ def execution_time(total_time):
     print(finalPrint)
 
 
-def sieveAtkin(limit):
-
-    # not written by me
-    # from geeksforgeeks.org/sieve-of-atkin/
-
-    P = [2, 3]
-    sieve = [False]*(limit+1)
-    for x in range(1, ceil(sqrt(limit))):
-        for y in range(1, ceil(sqrt(limit))):
-            n = 4*x**2 + y**2
-            if n <= limit and (n % 12 == 1 or n % 12 == 5):
-                sieve[n] = not sieve[n]
-            n = 3*x**2+y**2
-            if n <= limit and n % 12 == 7:
-                sieve[n] = not sieve[n]
-            n = 3*x**2 - y**2
-            if x > y and n <= limit and n % 12 == 11:
-                sieve[n] = not sieve[n]
-    for x in range(5, int(sqrt(limit))):
-        if sieve[x]:
-            for y in range(x**2, limit+1, x**2):
-                sieve[y] = False
-    for p in range(5, limit):
-        if sieve[p]:
-            P.append(p)
-    return P
-
-
 def sieveErato(limit):
     # Sieve of Eratothenes. Looks up prime numbers upto almost 8 million in a second.
 
@@ -195,33 +167,6 @@ def find_pythogorean_triplets_till(num):
             a, b, c = m**2 - n**2, 2*m*n, m**2 + n**2
             list_of_triplets.extend([a, b, c])
     yield(list_of_triplets)
-
-
-def permutations(list_in, return_original=False):
-    list_of_permutations = list()
-
-    def HeapPermutation(list_to_permutate, size, pos):
-        # itertools.permutations runs much faster, althought it doesn't maintain structual integrity for 2 digit numbers
-        if (size == 1):
-            permutation = list()
-            for x in list_to_permutate:
-                permutation.append(x)
-            list_of_permutations.append(permutation)
-            return
-        for i in range(size):
-            HeapPermutation(list_to_permutate, size-1, pos)
-            if size:
-                list_to_permutate[0], list_to_permutate[size -
-                                                        1] = list_to_permutate[size-1], list_to_permutate[0]
-            else:
-                list_to_permutate[i], list_to_permutate[size -
-                                                        1] = list_to_permutate[size-1], list_to_permutate[i]
-    HeapPermutation(list_in, len(list_in), len(list_in))
-
-    if return_original:
-        return (list_of_permutations)
-    else:
-        return(combine_list(list_of_permutations))
 
 
 def check_list_containment(main_list, list_to_check, method1=None, method2=None):
