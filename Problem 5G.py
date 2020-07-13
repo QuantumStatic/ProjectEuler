@@ -1,7 +1,7 @@
-from myFunctionsG import execute_it, LCM, check_list_containment, prime_factoriser as pf
+from myFunctionsG import execute_this, LCM, check_list_containment, prime_factoriser as pf
 
 
-@execute_it
+@execute_this
 def Problem_5():
 
     curr_lcm = 2520
