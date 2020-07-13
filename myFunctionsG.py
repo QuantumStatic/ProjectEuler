@@ -185,7 +185,7 @@ def check_list_containment(main_list, list_to_check, method1=None, method2=None)
         raise Exception("No method found to be specified")
 
 
-def execute_it(code_to_execute):
+def execute_this(code_to_execute):
     # I was tired of importing time and then making a start variable, calling the execution time function, I just wrote this
     print(f"Running {code_to_execute.__name__}\n")
     start = process_time_ns()
