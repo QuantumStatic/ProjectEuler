@@ -8,6 +8,8 @@ import random
 
 
 def execution_time(total_time):
+    # I get an OCD if it says 1 seconds and not 1 second hence this.
+
     ms, total_time = int(), total_time / 10**6
     mins = int(total_time // 60000)
     secs = int(total_time // 1000 - mins * 60)
@@ -31,7 +33,7 @@ def execution_time(total_time):
         if mins == 1:
             finalPrint += Min
         else:
-            finalPrint += minz
+            finalPrint += Minz
     if secs > 0:
         finalPrint += f"{secs}"
         if secs == 1:
@@ -62,6 +64,10 @@ def execution_time(total_time):
 
 
 def sieveAtkin(limit):
+
+    # not written by me
+    # from geeksforgeeks.org/sieve-of-atkin/
+
     P = [2, 3]
     sieve = [False]*(limit+1)
     for x in range(1, ceil(sqrt(limit))):
@@ -85,7 +91,9 @@ def sieveAtkin(limit):
     return P
 
 
-def sieveErato(limit) -> list:
+def sieveErato(limit):
+    # Sieve of Eratothenes. Looks up prime numbers upto almost 8 million in a second.
+
     primes, index, endPoint, result = [
         False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
     while index <= endPoint:
@@ -101,6 +109,7 @@ def sieveErato(limit) -> list:
 
 
 def prime_checker(suspected_prime):
+    # Checking primes since '99. supports lists and individual numbers as well
     if isinstance(suspected_prime, list):
         dummy = list()
         for prime_candidate in suspected_prime:
@@ -122,6 +131,8 @@ def prime_checker(suspected_prime):
 
 
 def remove_duplicates_from(input_with_duplicates):
+    # it's bad but it's mine, open to improvements
+
     if isinstance(input_with_duplicates, list):
         return(list(dict.fromkeys(input_with_duplicates)))
     else:
@@ -129,6 +140,8 @@ def remove_duplicates_from(input_with_duplicates):
 
 
 def max_consecutive_elements_counter(array, element_to_be_checked):
+    # old code, up for maintenance and improvement. feel free to puke.
+
     true_consec_counter, final_answer = 0, 0
     for x in array:
         if x == element_to_be_checked:
@@ -141,6 +154,7 @@ def max_consecutive_elements_counter(array, element_to_be_checked):
 
 
 def split_string(string, return_type=str()):
+    # too lazy to write it everytime
     if isinstance(return_type, str):
         return [char for char in string]
     else:
@@ -148,6 +162,8 @@ def split_string(string, return_type=str()):
 
 
 def combine_list(list_to_combine):
+    # sometimes you just want elemnts of a list to be combined. It's not used often but does save lives when it matters
+
     if isinstance(list_to_combine[0], str):
         string = str()
         return(string.join(list_to_combine))
@@ -164,11 +180,15 @@ def combine_list(list_to_combine):
 
 
 def list_substractor(main_list, list_to_substract):
+    # I don't remember half this file. I proabably was too lazy and just wrote it thinking that I might it need it later
+
     list_to_substract = set(list_to_substract)
     return(list(filter(lambda x: x not in list_to_substract, main_list)))
 
 
 def find_pythogorean_triplets_till(num):
+    # bad code. improvemnt known. will be updated soon to run in linear time
+
     list_of_triplets = list()
     for m in range(num+1):
         for n in range(m):
@@ -181,6 +201,7 @@ def permutations(list_in, return_original=False):
     list_of_permutations = list()
 
     def HeapPermutation(list_to_permutate, size, pos):
+        # itertools.permutations runs much faster, althought it doesn't maintain structual integrity for 2 digit numbers
         if (size == 1):
             permutation = list()
             for x in list_to_permutate:
@@ -204,20 +225,23 @@ def permutations(list_in, return_original=False):
 
 
 def check_list_containment(main_list, list_to_check, method1=None, method2=None):
+    # set method removes duplicates before checking can be a pain someitmes, hence my code. looking for imrpovements
     if method1:
         return(set(list_to_check).issubset(set(main_list)))
     elif method2:
-        for x in list_to_check:
+        listUnderScrutiny = iter(list_to_check)
+        for x in listUnderScrutiny:
             if x in main_list:
                 main_list.remove(x)
             else:
                 return False
         return True
     else:
-        raise Error("No method found to be specified")
+        raise Exception("No method found to be specified")
 
 
 def execute_it(code_to_execute):
+    # I was tired of importing time and then making a start variable, calling the execution time function, I just wrote this
     print(f"Running {code_to_execute.__name__}\n")
     start = process_time_ns()
     code_to_execute()
@@ -225,10 +249,13 @@ def execute_it(code_to_execute):
 
 
 def LCM(a, b):
+    # Until math.LCM comes in 3.9, this is my code
     return (a*b//gcd(a, b))
 
 
 def prime_factoriser(n):
+    # I am a rookie hence this implementation. due to upgrade, feel free to suggest
+
     if prime_checker(n):
         return ([n])
     prime_factor, list_of_factors = 2, list()
@@ -251,6 +278,8 @@ def prime_factoriser(n):
 
 
 def sieveEratoAlt(limit):
+    # sometimes I can use the generator when simeply iterating over it so why not.
+
     primes, index, endPoint, result = [
         False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
     while index <= endPoint:
@@ -265,6 +294,8 @@ def sieveEratoAlt(limit):
 
 
 def nearMatching(List, target):
+    # this function returns the index of the element closest to target in value
+
     differneces = tuple(map(lambda x: abs(x - target), List))
     smallestDif, closest = float('Inf'), int()
     for difference in differneces:
