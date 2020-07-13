@@ -225,8 +225,8 @@ def prime_factoriser(n):
 def sieveEratoAlt(limit):
     # sometimes I can use the generator when simeply iterating over it so why not.
 
-    primes, index, endPoint, result = [
-        False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
+    primes, index, endPoint = [False, True] * \
+        (limit//2), 3, ceil(limit**0.5) + 1,
     while index <= endPoint:
         for compositeNum in range(index ** 2, limit + 1, index * 2):
             primes[compositeNum] = False
