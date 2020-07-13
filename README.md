@@ -1,2 +1,2 @@
 # ProjectEuler
-Me solving Project Euler problems with
+Me solving Project Euler problems with my friends. 
