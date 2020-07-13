@@ -1,2 +1,2 @@
 # ProjectEuler
-Me solving Project Euler problems with my friends(@aarnavg17)
+Me solving Project Euler problems with my friends(@aarnavg17 & @AbhimanyuBhati)
