@@ -1,8 +1,8 @@
-from myFunctionsG import execute_it
+from myFunctionsG import execute_this
 from math import sqrt, floor
 
 
-@execute_it
+@execute_this
 def Problem_2():
 
     def fib(n):
