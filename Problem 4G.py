@@ -1,9 +1,9 @@
-from myFunctionsG import execute_it
+from myFunctionsG import execute_this
 
 # if there are two numbers with n digits & m digits then their product can't have more than n+m digits
 
 
-@execute_it
+@execute_this
 def Problem_4():
     palindrome = int()
 
