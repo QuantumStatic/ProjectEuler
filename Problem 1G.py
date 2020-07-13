@@ -1,8 +1,8 @@
 # Improvemnts suggested by @aarnavg17
-from myFunctionsG import execute_it
+from myFunctionsG import execute_this
 
 
-@execute_it
+@execute_this
 def Problem_1():
     FinalSum, endPoint, firstNum, lastNum = int(), 999, 3, int()
 
