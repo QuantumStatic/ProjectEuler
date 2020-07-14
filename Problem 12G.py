@@ -1,3 +1,4 @@
+# Added comments after discussing with @AbhimanyuBhati
 from math import sqrt, ceil
 from myFunctionsG import execute_this
 
