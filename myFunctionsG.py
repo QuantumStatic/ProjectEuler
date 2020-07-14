@@ -125,12 +125,19 @@ def max_consecutive_elements_counter(array, element_to_be_checked):
     return(final_answer if final_answer > true_consec_counter else true_consec_counter)
 
 
-def split_string(string, return_type=str()):
-    # too lazy to write it everytime
-    if isinstance(return_type, str):
-        return [char for char in string]
+def split_stuff(stuff, return_type=None):
+    # too lazy to write this everytime.
+    dummyList = list()
+    if isinstance(stuff, int):
+        while stuff:
+            dummyList.insert(0, stuff % 10)
+            stuff //= 10
+    if isinstance(stuff, str):
+        dummyList.extend([char for char in stuff])
+    if return_type is not None:
+        return (map(return_type, dummyList))
     else:
-        return list(map(int, string))
+        return (iter(dummyList))
 
 
 def combine_list(list_to_combine):
