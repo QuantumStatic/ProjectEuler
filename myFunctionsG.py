@@ -223,7 +223,7 @@ def prime_factoriser(n):
 
 
 def sieveEratoAlt(limit):
-    # sometimes I can use the generator when simeply iterating over it so why not.
+    # Lazy Evaluation of the SieveErato methode. sometimes I can use the generator when simeply iterating over it so why not.
 
     primes, index, endPoint = [False, True] * \
         (limit//2), 3, ceil(limit**0.5) + 1,
