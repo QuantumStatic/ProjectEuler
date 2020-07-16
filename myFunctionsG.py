@@ -66,8 +66,7 @@ def execution_time(total_time):
 def sieveErato(limit):
     # Sieve of Eratothenes. Looks up prime numbers upto almost 8 million in a second.
 
-    primes, index, endPoint, result = [
-        False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
+    primes, index, endPoint, result = [False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
     while index <= endPoint:
         for compositeNum in range(index ** 2, limit + 1, index * 2):
             primes[compositeNum] = False
@@ -108,7 +107,7 @@ def remove_duplicates_from(input_with_duplicates):
     if isinstance(input_with_duplicates, list):
         return(list(dict.fromkeys(input_with_duplicates)))
     else:
-        return(combine_list(remove_duplicates_from(split_string(input_with_duplicates))))
+        return(combine_list(remove_duplicates_from(split_stuff(input_with_duplicates))))
 
 
 def max_consecutive_elements_counter(array, element_to_be_checked):
@@ -119,8 +118,7 @@ def max_consecutive_elements_counter(array, element_to_be_checked):
         if x == element_to_be_checked:
             true_consec_counter += 1
         else:
-            final_answer = (
-                true_consec_counter if true_consec_counter > final_answer else final_answer)
+            final_answer = (true_consec_counter if true_consec_counter > final_answer else final_answer)
             true_consec_counter = 0
     return(final_answer if final_answer > true_consec_counter else true_consec_counter)
 
@@ -206,7 +204,7 @@ def LCM(a, b):
 
 
 def prime_factoriser(n):
-    # I am a rookie hence this implementation. due to upgrade, feel free to suggest
+    # I am a rookie hence this implementation. upgrade due, feel free to suggest improvements
 
     if prime_checker(n):
         return ([n])
@@ -230,7 +228,7 @@ def prime_factoriser(n):
 
 
 def sieveEratoAlt(limit):
-    # Lazy Evaluation of the SieveErato methode. sometimes I can use the generator when simeply iterating over it so why not.
+    # Lazy Evaluation of the SieveErato method. sometimes I can use the generator when simeply iterating over it so why not.
 
     primes, index, endPoint = [False, True] * \
         (limit//2), 3, ceil(limit**0.5) + 1,
@@ -246,7 +244,7 @@ def sieveEratoAlt(limit):
 
 
 def nearMatching(List, target):
-    # this function returns the index of the element closest to target in value
+    # this function returns the index of the element closest to target, in value
 
     differneces = tuple(map(lambda x: abs(x - target), List))
     smallestDif, closest = float('Inf'), int()
