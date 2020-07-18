@@ -245,11 +245,5 @@ def sieveEratoAlt(limit):
 
 def nearMatching(List, target):
     # this function returns the index of the element closest to target, in value
-
     differneces = tuple(map(lambda x: abs(x - target), List))
-    smallestDif, closest = float('Inf'), int()
-    for difference in differneces:
-        if difference < smallestDif:
-            closest = differneces.index(difference)
-            smallestDif = difference
-    return (closest)
+    return differneces.index(min(differneces))
