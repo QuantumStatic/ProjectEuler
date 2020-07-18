@@ -10,10 +10,7 @@ def Problem_14():
         if num in register.keys():
             return (register[num])
 
-        if num % 2:
-            register[num] = 2 + collatz((3*num + 1)//2)
-        else:
-            register[num] = 1 + collatz(num // 2)
+        register[num] = (2 + collatz((3*num + 1) //2)) if num % 2 else (1 + collatz(num // 2))
 
         return (register[num])
 
