@@ -7,12 +7,11 @@ def Problem_14():
     register = {1: 0, 2: 1}
 
     def collatz(num):
-        if num in register.keys():
+        try:
             return (register[num])
-
-        register[num] = (2 + collatz((3*num + 1) //2)) if num % 2 else (1 + collatz(num // 2))
-
-        return (register[num])
+        except:
+            register[num] = (2 + collatz((3*num + 1) //2)) if num % 2 else (1 + collatz(num // 2))
+            return (register[num])
 
     longestChain, biggestNum = int(), int()
     for n in range(3, 1_000_000):
