@@ -66,7 +66,8 @@ def execution_time(total_time):
 def sieveErato(limit):
     # Sieve of Eratothenes. Looks up prime numbers upto almost 8 million in a second.
 
-    primes, index, endPoint, result = [False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
+    primes, index, endPoint, result = [
+        False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
     while index <= endPoint:
         for compositeNum in range(index ** 2, limit + 1, index * 2):
             primes[compositeNum] = False
@@ -90,15 +91,15 @@ def prime_checker(suspected_prime):
         suspected_prime = abs(suspected_prime)
         if suspected_prime == 1 or suspected_prime == 2 or suspected_prime == 3:
             return (False if suspected_prime == 1 else True)
-        if suspected_prime % 2 == 0:
+        if suspected_prime % 2 == 0 or suspected_prime % 3 == 0:
             return False
-        end_point, prime_factor = ceil(suspected_prime**0.5), 3
+        end_point, prime_factor = ceil(suspected_prime**0.5), 5
         while True:
-            if suspected_prime % prime_factor == 0:
-                return False
-            if end_point <= prime_factor:
+            if end_point < prime_factor:
                 return True
-            prime_factor += 2
+            if suspected_prime % prime_factor == 0 or suspected_prime % (prime_factor+2) == 0:
+                return False
+            prime_factor += 6
 
 
 def remove_duplicates_from(input_with_duplicates):
@@ -118,7 +119,8 @@ def max_consecutive_elements_counter(array, element_to_be_checked):
         if x == element_to_be_checked:
             true_consec_counter += 1
         else:
-            final_answer = (true_consec_counter if true_consec_counter > final_answer else final_answer)
+            final_answer = (
+                true_consec_counter if true_consec_counter > final_answer else final_answer)
             true_consec_counter = 0
     return(final_answer if final_answer > true_consec_counter else true_consec_counter)
 
