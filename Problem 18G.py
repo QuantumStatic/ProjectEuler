@@ -1,4 +1,4 @@
-#this question couldn't ever be completed if not for Rishi Sekhar. 
+# this question couldn't ever be completed if not for Rishi Sekhar (@gayshot27).
 from myFunctionsG import execute_this
 
 
