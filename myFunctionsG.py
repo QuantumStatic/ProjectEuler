@@ -66,8 +66,7 @@ def execution_time(total_time):
 def sieveErato(limit):
     # Sieve of Eratothenes. Looks up prime numbers upto almost 8 million in a second.
 
-    primes, index, endPoint, result = [
-        False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
+    primes, index, endPoint, result = [False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
     while index <= endPoint:
         for compositeNum in range(index ** 2, limit + 1, index * 2):
             primes[compositeNum] = False
