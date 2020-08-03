@@ -112,16 +112,13 @@ def remove_duplicates_from(input_with_duplicates):
 
 def max_consecutive_elements_counter(array, element_to_be_checked):
     # old code, up for maintenance and improvement. feel free to puke.
-
-    true_consec_counter, final_answer = 0, 0
+    consec_counter, final_answer = 0, 0
     for x in array:
         if x == element_to_be_checked:
-            true_consec_counter += 1
+            consec_counter += 1
         else:
-            final_answer = (
-                true_consec_counter if true_consec_counter > final_answer else final_answer)
-            true_consec_counter = 0
-    return(final_answer if final_answer > true_consec_counter else true_consec_counter)
+            final_answer, consec_counter = (consec_counter if consec_counter > final_answer else final_answer), int()
+    return (final_answer if final_answer > consec_counter else consec_counter)
 
 
 def split_stuff(stuff, return_type=None):
