@@ -1,8 +1,9 @@
+#Runtime - 8 milliseconds (0.008 seconds)
 from myFunctionsG import execute_this
 
 
 @execute_this
-def main():
+def Problem_22():
     with open("Problem_22.txt") as file:
         name = file.read().split(',')
     final_sum = int()
