@@ -1,3 +1,4 @@
+#runtime - 10 microseconds (0.000010 seconds)
 from math import factorial
 from myFunctionsG import execute_this, split_stuff as split
 
