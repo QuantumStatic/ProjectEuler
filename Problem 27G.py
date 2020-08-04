@@ -1,3 +1,4 @@
+#Runtime - 250 milliseconds (0.250 seconds)
 from myFunctionsG import execute_this, prime_checker as isprime, sieveEratoAlt as generatePrimes
 
 
