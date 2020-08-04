@@ -1,3 +1,4 @@
+# Runtime - 3 seconds 75 milliseconds (3.075 seconds)
 from math import sqrt, floor
 from myFunctionsG import prime_checker as isprime, execute_this
 
