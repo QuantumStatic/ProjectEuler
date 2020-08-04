@@ -1,3 +1,4 @@
+# Runtime - 11 microseconds (0.000011 seconds)
 from myFunctionsG import execute_this, LCM, check_list_containment, prime_factoriser as pf
 
 
