@@ -1,3 +1,4 @@
+# Runtime - 21.5 microseconds (0.0000215 seconds)
 from myFunctionsG import execute_this, split_stuff as split
 
 
