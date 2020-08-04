@@ -1,10 +1,11 @@
+# Runtime - 255 milliseconds (0.255 seconds)
 from math import sqrt
 from myFunctionsG import execute_this
 
 
 @execute_this
 def Problem_9():
-    diff = 0.009
+    diff = 0.008
     for x in range(1, 295):
         for y in range(1, 1000):
             z = round(sqrt(x**2+y**2), 2)
