@@ -1,3 +1,4 @@
+# Runtime - 1 second 100 millisecond (1.1 seconds)
 from myFunctionsG import execute_this, combine_list
 from itertools import permutations
 
