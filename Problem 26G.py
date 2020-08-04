@@ -1,3 +1,4 @@
+#Runtime - 40 microseconds (0.000040 seconds)
 from myFunctionsG import execute_this, sieveErato
 
 
