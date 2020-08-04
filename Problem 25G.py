@@ -1,3 +1,4 @@
+# Runtime 33 milliseconds (0.033 seconds)
 from math import sqrt, floor
 from myFunctionsG import execute_this
 
