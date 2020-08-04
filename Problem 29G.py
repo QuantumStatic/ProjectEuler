@@ -1,3 +1,4 @@
+# Runtime - 10 milliseconds (0.010 seconds)
 from myFunctionsG import remove_duplicates_from as rdf, execute_this
 
 @execute_this
