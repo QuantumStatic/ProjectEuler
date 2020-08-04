@@ -1,3 +1,4 @@
+# Runtime - 85 microseconds (0.000085 seconds)
 from myFunctionsG import execute_this
 
 
@@ -46,5 +47,4 @@ def main():
             for y in range(3, 20):
                 yield (grid[20*x+y] * grid[20*x+y+19] * grid[20*x+y+38] * grid[20*x+y+57])
 
-    print(max((max(left_and_right(grid)), max(up_and_down(grid)),
-               max(main_diagonal(grid)), max(sub_diagonal(grid)))))
+    print(max((max(left_and_right(grid)), max(up_and_down(grid)),max(main_diagonal(grid)), max(sub_diagonal(grid)))))
