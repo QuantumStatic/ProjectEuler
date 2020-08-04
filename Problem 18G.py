@@ -1,4 +1,5 @@
 # this question couldn't ever be completed if not for Rishi Sekhar (@gayshot27).
+# Runtime - 15 microseconds (0.000015 seconds)
 from myFunctionsG import execute_this
 
 
