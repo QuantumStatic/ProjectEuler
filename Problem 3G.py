@@ -1,3 +1,4 @@
+# Runtime - 41 milliseconds (0.041 seconds)
 from myFunctionsG import execute_this, prime_checker as isprime
 from math import sqrt, ceil
 
