@@ -1,3 +1,4 @@
+#Runtime - 35 microseconds (0.000035)
 from myFunctionsG import execute_this
 
 @execute_this
