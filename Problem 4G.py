@@ -1,3 +1,4 @@
+# Runtime - 83.2 milliseconds (0.0832 seconds)
 from myFunctionsG import execute_this
 
 # if there are two numbers with n digits & m digits then their product can't have more than n+m digits
