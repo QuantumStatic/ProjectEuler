@@ -1,4 +1,5 @@
 # Improvemnts suggested by @aarnavg17
+# Runtime - 1.1 microseconds (0.0000011 seconds)
 from myFunctionsG import execute_this
 
 
