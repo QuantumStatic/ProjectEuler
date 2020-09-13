@@ -1,3 +1,4 @@
+# Runtime - 21.5 milliseconds (0.215 seconds)
 from myFunctionsG import prime_checker as isPrime, split_stuff, combine_list, execute_this
 
 @execute_this
