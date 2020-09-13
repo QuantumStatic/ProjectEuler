@@ -14,10 +14,10 @@ def Problem_31():
             count += 1
             return
 
-        for x in range(currentDenomination, 7):
-            if currentConstruction + denominations[x] > 200:
-                return
-            MethodFinder(currentConstruction + denominations[x], x)
+    for x in range(currentDenomination, 7):
+        if currentConstruction + denominations[x] > 200:
+            return
+        MethodFinder(currentConstruction + denominations[x], x)
 
     MethodFinder(0, 0)
     print(count + 1)
