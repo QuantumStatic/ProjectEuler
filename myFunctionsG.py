@@ -1,10 +1,8 @@
 # working directory is the location where the file is saved
-from time import process_time_ns
-from math import ceil, sqrt, floor, gcd
+from math import ceil, sqrt
 from itertools import permutations
-from collections import Counter
-import cmath
-import random
+from time import process_time_ns
+from typing import Any
 
 
 def execution_time(total_time):
@@ -129,29 +127,45 @@ def split_stuff(stuff, return_type=None):
             dummyList.insert(0, stuff % 10)
             stuff //= 10
     if isinstance(stuff, str):
-        dummyList.extend([char for char in stuff])
+        dummyList = list(stuff)
     if return_type is not None:
         return (map(return_type, dummyList))
     else:
         return (iter(dummyList))
 
 
-def combine_list(list_to_combine):
+def combine_list(list_to_combine,lisIterType=None):
     # sometimes you just want elemnts of a list to be combined. It's not used often but does save lives when it matters
 
-    if isinstance(list_to_combine[0], str):
-        string = str()
-        return(string.join(list_to_combine))
-    if isinstance(list_to_combine[0], int):
-        num = int()
-        for x in list_to_combine:
-            num = num*10 + x
-        return(num)
-    if isinstance(list_to_combine[0], list) or isinstance(list_to_combine[0], tuple):
-        dummy = list()
-        for element in list_to_combine:
-            dummy.append(combine_list(element))
-        return (dummy)
+    if lisIterType is None:
+        if isinstance(list_to_combine[0], str):
+            string = str()
+            return(string.join(list_to_combine))
+        if isinstance(list_to_combine[0], int):
+            num = int()
+            for x in list_to_combine:
+                num = num*10 + x
+            return(num)
+        if isinstance(list_to_combine[0], list) or isinstance(list_to_combine[0], tuple):
+            dummy = list()
+            for element in list_to_combine:
+                dummy.append(combine_list(element))
+            return (dummy)
+    else:
+        if isinstance(lisIterType, str):
+            string = str()
+            return(string.join(list_to_combine))
+        if isinstance(lisIterType, int):
+            num = int()
+            for x in list_to_combine:
+                num = num*10 + x
+            return(num)
+        if isinstance(lisIterType, list) or isinstance(lisIterType, tuple):
+            dummy = list()
+            for element in list_to_combine:
+                dummy.append(combine_list(element))
+            return (dummy)
+        return False
 
 
 def list_substractor(main_list, list_to_substract):
@@ -190,15 +204,33 @@ def check_list_containment(main_list, list_to_check, method1=None, method2=None)
 
 def execute_this(code_to_execute):
     # I was tired of importing time and then making a start variable, calling the execution time function, I just wrote this
+    clear_output_screen()
     print(f"Running {code_to_execute.__name__}\n")
     start = process_time_ns()
     code_to_execute()
     execution_time(process_time_ns()-start)
 
 
-def LCM(a, b):
-    # Until math.LCM comes in 3.9, this is my code
-    return (a*b//gcd(a, b))
+def compare_these(*functions, **function_args):
+
+    clear_output_screen()
+    for function in functions:
+        print(f"Running {function.__name__}")
+        start = int()
+        if function.__name__ in function_args:
+            start = process_time_ns()
+            if (output := function(*function_args[function.__name__])) is not None:
+                print(output)
+        else:
+            start = process_time_ns()
+            if (output := function()) is not None:
+                print(output)
+        execution_time(process_time_ns()-start)
+
+
+def clear_output_screen():
+    from os import system, name
+    system ("clear") if name == "posix" else system("cls")
 
 
 def prime_factoriser(n):
@@ -242,6 +274,5 @@ def sieveEratoAlt(limit):
 
 
 def nearMatching(List, target):
-    # this function returns the index of the element closest to target, in value
     differneces = tuple(map(lambda x: abs(x - target), List))
     return differneces.index(min(differneces))
