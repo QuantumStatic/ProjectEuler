@@ -1,5 +1,5 @@
 # Runtime - 13.5 milliseconds (0.0135 seconds)
-from myFunctions import execute_this
+from myFunctionsG import execute_this
 from math import sqrt
 
 @execute_this
