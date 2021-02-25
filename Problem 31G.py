@@ -13,7 +13,6 @@ def Problem_31():
             nonlocal count
             count += 1
             return
-
         for x in range(currentDenomination, 7):
             if currentConstruction + denominations[x] > 200:
                 return

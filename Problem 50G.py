@@ -1,5 +1,5 @@
 # Runtime - 1 second 800 milliseconds (1.8 seconds)
-from myFunctions import execute_this, sieveErato, prime_checker as isprime
+from myFunctionsG import execute_this, sieveErato, prime_checker as isprime
 
 
 @execute_this
