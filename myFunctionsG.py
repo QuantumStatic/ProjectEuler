@@ -1,8 +1,5 @@
-# working directory is the location where the file is saved
-from math import ceil, sqrt
-from itertools import permutations
 from time import process_time_ns
-from typing import Any
+from rich import print
 
 
 def execution_time(total_time):
@@ -61,42 +58,6 @@ def execution_time(total_time):
     print(finalPrint)
 
 
-def sieveErato(limit):
-    # Sieve of Eratothenes. Looks up prime numbers upto almost 8 million in a second.
-
-    primes, index, endPoint, result = [False, True] * (limit//2+1), 3, ceil(limit**0.5) + 1, [2]
-    while index <= endPoint:
-        for compositeNum in range(index ** 2, limit + 1, index * 2):
-            primes[compositeNum] = False
-        index += 2
-        while not primes[index]:
-            index += 2
-    for x in range(3, len(primes), 2):
-        if primes[x]:
-            result.append(x)
-    return (result)
-
-
-def prime_checker(suspected_prime):
-    # Checking primes since '99. supports lists and individual numbers as well
-    if isinstance(suspected_prime, list):
-        dummy = list()
-        for prime_candidate in suspected_prime:
-            dummy.append(prime_checker(prime_candidate))
-        return (dummy)
-    else:
-        suspected_prime = abs(suspected_prime)
-        if suspected_prime == 1 or suspected_prime == 2 or suspected_prime == 3:
-            return (False if suspected_prime == 1 else True)
-        if suspected_prime % 2 == 0 or suspected_prime % 3 == 0:
-            return False
-        end_point, prime_factor = ceil(suspected_prime**0.5), 5
-        while True:
-            if end_point < prime_factor:
-                return True
-            if suspected_prime % prime_factor == 0 or suspected_prime % (prime_factor+2) == 0:
-                return False
-            prime_factor += 6
 
 
 def remove_duplicates_from(input_with_duplicates):
@@ -136,7 +97,6 @@ def split_stuff(stuff, return_type=None):
 
 def combine_list(list_to_combine,lisIterType=None):
     # sometimes you just want elemnts of a list to be combined. It's not used often but does save lives when it matters
-
     if lisIterType is None:
         if isinstance(list_to_combine[0], str):
             string = str()
@@ -187,9 +147,9 @@ def find_pythogorean_triplets_till(num):
 
 
 def check_list_containment(main_list, list_to_check, method1=None, method2=None):
-    # set method removes duplicates before checking can be a pain someitmes, hence my code. looking for imrpovements
+    # set method removes duplicates before checking can be a pain someitmes, hence my code. looking for improvements
     if method1:
-        return(set(list_to_check).issubset(set(main_list)))
+        return set(list_to_check).issubset(set(main_list))
     elif method2:
         listUnderScrutiny = iter(list_to_check)
         for x in listUnderScrutiny:
@@ -202,77 +162,64 @@ def check_list_containment(main_list, list_to_check, method1=None, method2=None)
         raise Exception("No method found to be specified")
 
 
-def execute_this(code_to_execute):
+def execute_this(function):
     # I was tired of importing time and then making a start variable, calling the execution time function, I just wrote this
     clear_output_screen()
-    print(f"Running {code_to_execute.__name__}\n")
+    print(f"Running {function.__name__}\n")
     start = process_time_ns()
-    code_to_execute()
+    to_return = function()
     execution_time(process_time_ns()-start)
+    return to_return
 
 
 def compare_these(*functions, **function_args):
 
-    clear_output_screen()
+    printOut = function_args.setdefault("print_output", False)
+
     for function in functions:
+        print("  ", end='')
         print(f"Running {function.__name__}")
-        start = int()
-        if function.__name__ in function_args:
-            start = process_time_ns()
-            if (output := function(*function_args[function.__name__])) is not None:
-                print(output)
-        else:
-            start = process_time_ns()
-            if (output := function()) is not None:
-                print(output)
+        args = function_args.setdefault(function.__name__,[])
+        start = process_time_ns()
+        if (output := function(*args)) is not None and printOut:
+            print(output)
+        print("  ", end='')
         execution_time(process_time_ns()-start)
 
 
 def clear_output_screen():
     from os import system, name
-    system ("clear") if name == "posix" else system("cls")
-
-
-def prime_factoriser(n):
-    # I am a rookie hence this implementation. upgrade due, feel free to suggest improvements
-
-    if prime_checker(n):
-        return ([n])
-    prime_factor, list_of_factors = 2, list()
-    while n % prime_factor == 0:
-        n //= prime_factor
-        list_of_factors.append(prime_factor)
-    if n == 1:
-        return (list_of_factors)
-    end_point, prime_factor = ceil(sqrt(n)), 3
-    while prime_factor < end_point+1:
-        if n % prime_factor == 0:
-            n //= prime_factor
-            list_of_factors.append(prime_factor)
-            if n == 1:
-                return(list_of_factors)
-        else:
-            prime_factor += 2
-    list_of_factors.append(n)
-    return(list_of_factors)
-
-
-def sieveEratoAlt(limit):
-    # Lazy Evaluation of the SieveErato method. sometimes I can use the generator when simeply iterating over it so why not.
-
-    primes, index, endPoint = [False, True] * \
-        (limit//2), 3, ceil(limit**0.5) + 1,
-    while index <= endPoint:
-        for compositeNum in range(index ** 2, limit + 1, index * 2):
-            primes[compositeNum] = False
-        index += 2
-        while not primes[index]:
-            index += 2
-    for x in range(3, len(primes), 2):
-        if primes[x]:
-            yield (x)
+    system ("clear") if name is "posix" else system("cls")
 
 
 def nearMatching(List, target):
     differneces = tuple(map(lambda x: abs(x - target), List))
     return differneces.index(min(differneces))
+
+
+def run_cpp(path="/Users/utkarsh/Desktop/Utkarsh/Languages/C++/execute/main.cpp", timeIt=False,args:tuple=None, input:tuple=None):
+    from subprocess import run, PIPE
+    
+    time_total = process_time_ns()
+    p1 = run(["g++","-o","main",path], stderr = PIPE, text=True)
+    time_total = process_time_ns() - time_total
+    
+    if p1.stderr.find("error") >= 0:
+        print (p1.stderr)
+        return 
+
+    to_run = ["./main"]
+    if isinstance(args,list):
+        to_run.extend(args)
+
+    time_total -= process_time_ns()
+    p1 = run(to_run, stdout=PIPE, stderr=PIPE, stdin=input ,text=True)
+    time_total += process_time_ns()
+    
+    if timeIt:
+        execution_time(time_total)
+    
+    p1.stdout = tuple(str(p1.stdout).splitlines())
+    p1.args = tuple(p1.args)
+
+    return p1
